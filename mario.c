@@ -38,7 +38,7 @@ while (height < 1 || height > 8);
             printf("#");
         }
                      
-        printf(" \n");
+        printf("\n");
             
         }
     }
