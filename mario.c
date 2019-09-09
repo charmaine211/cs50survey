@@ -20,24 +20,26 @@ while (height < 1 || height > 8);
         // nested for loops to generate pyramids when height is between 1 and 8
         for (int row = 1 ; row <= height ; row++)
         {
-                    for(int i = height - row ; i >= 0; i--)
-                        {
-                             printf(" ");
-                        }
         
-                    for(int i = 0 ; i < row; i++)
-                        {
-                            printf("#");
-                        }
+        for(int i = height - row -1 ; i >= 0; i--)
+        {
+            printf(" ");
+        }
+        
+        for(int i = 0 ; i < row; i++)
+        {
+            printf("#");
+        }
             
-                    printf("  ");
+        printf("  ");
              
-                    for(int i = 0 ; i < row ; i++)
-                        {
-                            printf("#");
-                        }
+        for(int i = 0 ; i < row ; i++)
+        {
+            printf("#");
+        }
                      
-                    printf(" \n");
+        printf(" \n");
+            
         }
     }
 }
