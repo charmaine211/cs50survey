@@ -49,7 +49,7 @@ int main(int argc, string argv[])
                     // Add 1 to j, to go to the next char in key
                     int step = (p[i] + key - 65) % 26;
                     int cipher = step + 65;
-                    printf("%c\n", cipher);
+                    printf("%c", cipher);
                     j = j + 1;
                 }
                         
@@ -61,7 +61,7 @@ int main(int argc, string argv[])
                     // Add 1 to j, to go to the next char in key
                     int step = (p[i] + key - 97) % 26;
                     int cipher = step + 97;
-                    printf("%c\n", cipher);
+                    printf("%c", cipher);
                     j = j + 1;
                 }                      
             }
