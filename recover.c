@@ -45,10 +45,10 @@ int main(int argc, char *argv[])
                 fclose(img);
             }
 
-                sprintf(filename, "%03i.jpg", file_counter);
-                img = fopen(filename, "w");
-                fwrite(&buffer, 512, 1, img);
-                file_counter++;
+            sprintf(filename, "%03i.jpg", file_counter);
+            img = fopen(filename, "w");
+            fwrite(&buffer, 512, 1, img);
+            file_counter++;
         }
 
         // already found a JPEG
