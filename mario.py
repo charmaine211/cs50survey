@@ -23,7 +23,7 @@ def main():
 def get_positive_int(prompt):
     while True:
         n = get_int(prompt)
-        if n > 0:
+        if n > 0 and n < 9:
             break
     return n
 
