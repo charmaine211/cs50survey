@@ -13,7 +13,7 @@ def main():
         for j in range(row + 1):
             print('#', end='')
 
-        print(' ', end='')
+        print('  ', end='')
 
         for k in range(row + 1):
             print('#', end='')
