@@ -1,7 +1,7 @@
 from cs50 import get_string
 
 
-# Check cc number
+# Main Creditcard function to check the numbers
 def main():
     number = get_number('Number: ')
     first = int(number[0])
@@ -51,6 +51,8 @@ def get_number(prompt):
     return n
 
 # Luhn’s Algorithm to check if it is a valid number
+
+
 def calculate(number, lenght):
     doublessum = 0
     singlesum = 0
@@ -65,6 +67,7 @@ def calculate(number, lenght):
     # Sum up the numbers that need to be multiplies
     while doubles >= 0:
         x = 2 * int(number[doubles])
+
         #When the number is bigger than 9, we need to seperate them. Else do not seperate
         if len(str(x)) == 2:
             y = x // 10
@@ -78,6 +81,7 @@ def calculate(number, lenght):
     # Sum up the doubles and the singles
     sum = doublessum + singlesum
     return sum
+
 
 if __name__ == "__main__":
     main()
