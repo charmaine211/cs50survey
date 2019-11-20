@@ -39,7 +39,7 @@ def main():
             print('Number is invalid')
 
     else:
-        print('Number is invalid')
+        print('INVALID')
 
 
 # Prompt user for a digit
