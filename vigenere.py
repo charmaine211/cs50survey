@@ -17,7 +17,7 @@ def vigenere(prompt):
         # Vraag user om text
         plaintext = get_string(prompt)
 
-        print("ciphertext: ")
+        print("ciphertext: ", end = '')
 
         # Split plaintext up in list
         p_items = plaintext.split()
