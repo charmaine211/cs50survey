@@ -9,8 +9,11 @@ def vigenere(prompt):
     key = sys.argv[1]
 
     # Check if the user provides 2 command line arguments and key is alphabetical
-    if len(sys.argv) == 2 and key.isalpha():
+    if len(sys.argv) != 2:
+        print("Usage: python vigenere.py k")
+        return 1
 
+    elif key.isalpha():
         # Vraag user om text
         plaintext = get_string(prompt)
 
