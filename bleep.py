@@ -38,7 +38,7 @@ def bleep(prompt):
         if word[i].lower() in words:
             # If it's a banned word, add * times the length of word to redacted
             for j in range(len(word[i])):
-                redacted  = redacted + "*"
+                redacted = redacted + "*"
             redacted = redacted + " "
         # Else do nothing with the word and just add it to redacted
         else:
@@ -46,6 +46,7 @@ def bleep(prompt):
 
     # Print word without last space
     print(redacted[:-1])
+
 
 if __name__ == "__main__":
     main()
