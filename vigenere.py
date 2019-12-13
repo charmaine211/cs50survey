@@ -64,9 +64,13 @@ def vigenere(prompt):
                 print(end = ' ')
 
             else:
-                print(item, end = ' ')
+                return 1
 
         print('')
+
+    else:
+        print("Usage: python vigenere.py k")
+        return 1
 
 def shift(c):
     input = ord(c)
