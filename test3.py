@@ -3,70 +3,71 @@ import sys
 from sys import argv
 
 def main():
-    vigenere("plaintext: ")
-
-def vigenere(prompt):
     key = sys.argv[1]
 
-    # Check if the user provides 2 command line arguments and key is alphabetical
-    if len(sys.argv) == 2 and key.isalpha():
+    # Check if the user provides 2 command line arguments
+    if len (sys.argv) != 2:
+        print("Usage: python vigenere.py k")
+        sys.exit (1)
 
-        # Vraag user om text
-        plaintext = get_string(prompt)
+    #Check if key is alphabetical
+    if not key.isalpha():
+        print("Usage: python vigenere.py k")
+        return 1
 
-        # Split plaintext up in list
-        p_items = plaintext.split()
+    plaintext = get_string("plaintext: ")
 
-        # Ticker to iterate over key
-        k = 0
-        n = len(key)
+    print("ciphertext: ", end = '')
 
-        for item in p_items:
+    # Split plaintext up in list
+    p_items = plaintext.split()
 
-            if item.isalpha:
+    # Ticker to iterate over key
+    k = 0
+    n = len(key)
 
-                # Loop over every word
-                letters = list(item)
-                m = len(letters)
+    # Loop over every word
+    for item in p_items:
 
-                #iterate over every letter in every word
-                for j in range(m):
+        letter = list(item)
+        letters = len(letter)
 
-                    # Condition is the lenght of the key
-                    if k < n:
+        # Iterate over every letter in every word
+        for j in range(letters):
 
-                        i_ascii = ord(letters[j])
+            # Condition is the lenght of the key
+            if k < n:
 
-                        # Word is uppercade
-                        if i_ascii < 91:
-                            key_ascii = shift(key[k])
-                            step = (i_ascii + key_ascii - 65) % 26
-                            c = step + 65
-                            cipher = chr(c)
-                            print(cipher, end = '')
-                            k = k + 1
+                letter_ascii = ord(letter[j])
 
-                        # Word is lower case
-                        elif i_ascii > 96:
-                            key_ascii = shift(key[k])
-                            step = (i_ascii + key_ascii - 97) % 26
-                            c = step + 97
-                            cipher = chr(c)
-                            print(cipher, end = '')
-                            k = k + 1
+                # Letter is uppercase
+                if letter_ascii < 91:
+                    key_ascii = shift(key[k])
+                    step = (letter_ascii + key_ascii - 65) % 26
+                    cipher_ascii = step + 65
+                    cipher = chr(cipher_ascii)
+                    print(cipher, end = '')
+                    k += 1
 
-                    # Reset conditions for lenght of key and go back to last j'th letter of key
-                    else:
-                        k = 0
-                        j = j - 1
+                # Word is lower case
+                elif letter_ascii > 96:
+                    key_ascii = shift(key[k])
+                    step = (letter_ascii + key_ascii - 97) % 26
+                    cipher_ascii = step + 97
+                    cipher = chr(cipher_ascii)
+                    print(cipher, end = '')
+                    k += 1
 
-                # Space after every word
-                print(end = ' ')
-
+            # Reset conditions for lenght of key and go back to last j'th letter of key
             else:
-                print(item, end = ' ')
+                k = 0
+                j -= 1
 
-        print('')
+        # Space after every word
+        print(end = ' ')
+
+    print('')
+
 
 def shift(c):
     input = ord(c)
