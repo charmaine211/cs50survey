@@ -88,10 +88,8 @@ def main():
             # Move to the next letter in the key
             k += 1
 
-        # Print the encrypted word and remove the space at the end
-        print(encryp.rstrip(' '))
-
-    print('')
+    # Print the encrypted word and remove the space at the end
+    print(encryp.rstrip(' '))
 
 # Change key to ascii code
 def shift(c):
