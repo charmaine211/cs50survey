@@ -2,6 +2,7 @@ from cs50 import get_string
 import sys
 from sys import argv
 
+
 def main():
 
     # Create a key without spaces
@@ -9,11 +10,11 @@ def main():
     key = key1.replace(" ", "")
 
     # Check if the user provides 2 command line arguments
-    if len (sys.argv) != 2:
+    if len(sys.argv) != 2:
         print("Usage: python vigenere.py k")
-        sys.exit (1)
+        sys.exit(1)
 
-    #Check if key is alphabetical
+    # Check if key is alphabetical
     if not key.isalpha():
         print("Usage: python vigenere.py k")
         sys.exit(1)
@@ -21,8 +22,8 @@ def main():
     # Ask for the plaintext
     plaintext = get_string("plaintext: ")
 
-    #Give the ciphertext
-    print("ciphertext: ", end = '')
+    # Give the ciphertext
+    print("ciphertext: ", end='')
 
     # Split plaintext up in list with words
     p_items = plaintext.split()
@@ -85,11 +86,12 @@ def main():
                         step = (letter_ascii + (key_ascii - 97)) % 26
                         cipher_ascii = step + 97
                         cipher = chr(cipher_ascii)
-                        encryp = encryp +cipher
+                        encryp = encryp + cipher
 
                 # Move to the next letter in the key
                 k += 1
 
+            # When not a letter but another symbol in plaintext
             else:
                 encryp = encryp + j
 
@@ -99,6 +101,8 @@ def main():
     print(encryp.rstrip(' '))
 
 # Change key to ascii code
+
+
 def shift(c):
     input = ord(c)
 
