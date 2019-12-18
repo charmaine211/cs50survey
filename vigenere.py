@@ -31,6 +31,9 @@ def main():
     k = 0
     n = len(key)
 
+    # Variable to safe encryption in
+    encryp = ""
+
     # Loop over every word
     for item in p_items:
 
@@ -50,7 +53,7 @@ def main():
                     step = (letter_ascii + key_ascii - 65) % 26
                     cipher_ascii = step + 65
                     cipher = chr(cipher_ascii)
-                    print(cipher, end = '')
+                    encryp = encryp + "" + cipher
 
                 # Word is lower case
                 elif letter_ascii > 96:
@@ -58,7 +61,7 @@ def main():
                     step = (letter_ascii + (key_ascii - 97)) % 26
                     cipher_ascii = step + 97
                     cipher = chr(cipher_ascii)
-                    print(cipher, end = '')
+                    encryp = encryp + " " + cipher
 
             # We've reached the last letter in the key
             else:
@@ -72,7 +75,7 @@ def main():
                     step = (letter_ascii + key_ascii - 65) % 26
                     cipher_ascii = step + 65
                     cipher = chr(cipher_ascii)
-                    print(cipher, end = '')
+                    encryp = encryp + " " + cipher
 
                 # Word is lower case
                 elif letter_ascii > 96:
@@ -80,13 +83,13 @@ def main():
                     step = (letter_ascii + (key_ascii - 97)) % 26
                     cipher_ascii = step + 97
                     cipher = chr(cipher_ascii)
-                    print(cipher, end = '')
+                    encryp = encryp +" " + cipher
 
             # Move to the next letter in the key
             k += 1
 
-        # Space after every word
-        print(end = ' ')
+        # Print the encrypted word and remove the space at the end
+        print(encryp.strip())
 
     print('')
 
