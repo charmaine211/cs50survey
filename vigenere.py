@@ -16,7 +16,7 @@ def main():
     #Check if key is alphabetical
     if not key.isalpha():
         print("Usage: python vigenere.py k")
-        return 1
+        sys.exit(1)
 
     # Ask for the plaintext
     plaintext = get_string("plaintext: ")
