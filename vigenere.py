@@ -44,49 +44,56 @@ def main():
 
             letter_ascii = ord(j)
 
-            # Condition is the lenght of the key
-            if k < n:
+            if j.isalpha():
 
-                # Letter is uppercase
-                if letter_ascii < 91:
-                    key_ascii = shift(key[k])
-                    step = (letter_ascii + key_ascii - 65) % 26
-                    cipher_ascii = step + 65
-                    cipher = chr(cipher_ascii)
-                    encryp = encryp + "" + cipher
+                # Condition is the lenght of the key
+                if k < n:
 
-                # Word is lower case
-                elif letter_ascii > 96:
-                    key_ascii = shift(key[k])
-                    step = (letter_ascii + (key_ascii - 97)) % 26
-                    cipher_ascii = step + 97
-                    cipher = chr(cipher_ascii)
-                    encryp = encryp + " " + cipher
+                    # Letter is uppercase
+                    if letter_ascii < 91:
+                        key_ascii = shift(key[k])
+                        step = (letter_ascii + key_ascii - 65) % 26
+                        cipher_ascii = step + 65
+                        cipher = chr(cipher_ascii)
+                        encryp = encryp + cipher
 
-            # We've reached the last letter in the key
+                    # Word is lower case
+                    elif letter_ascii > 96:
+                        key_ascii = shift(key[k])
+                        step = (letter_ascii + (key_ascii - 97)) % 26
+                        cipher_ascii = step + 97
+                        cipher = chr(cipher_ascii)
+                        encryp = encryp + cipher
+
+                # We've reached the last letter in the key
+                else:
+
+                    # loop back to the first letter of the key
+                    k = 0
+
+                    # Letter is uppercase
+                    if letter_ascii < 91:
+                        key_ascii = shift(key[k])
+                        step = (letter_ascii + key_ascii - 65) % 26
+                        cipher_ascii = step + 65
+                        cipher = chr(cipher_ascii)
+                        encryp = encryp + cipher
+
+                    # Word is lower case
+                    elif letter_ascii > 96:
+                        key_ascii = shift(key[k])
+                        step = (letter_ascii + (key_ascii - 97)) % 26
+                        cipher_ascii = step + 97
+                        cipher = chr(cipher_ascii)
+                        encryp = encryp +cipher
+
+                # Move to the next letter in the key
+                k += 1
+
             else:
+                encryp = encryp + j
 
-                # loop back to the first letter of the key
-                k = 0
-
-                # Letter is uppercase
-                if letter_ascii < 91:
-                    key_ascii = shift(key[k])
-                    step = (letter_ascii + key_ascii - 65) % 26
-                    cipher_ascii = step + 65
-                    cipher = chr(cipher_ascii)
-                    encryp = encryp + " " + cipher
-
-                # Word is lower case
-                elif letter_ascii > 96:
-                    key_ascii = shift(key[k])
-                    step = (letter_ascii + (key_ascii - 97)) % 26
-                    cipher_ascii = step + 97
-                    cipher = chr(cipher_ascii)
-                    encryp = encryp +" " + cipher
-
-            # Move to the next letter in the key
-            k += 1
+        encryp = encryp + ' '
 
     # Print the encrypted word and remove the space at the end
     print(encryp.rstrip(' '))
