@@ -38,7 +38,7 @@ def main():
             # Condition is the lenght of the key
             if k < n:
 
-                letter_ascii = ord(letter[j])
+                letter_ascii = ord(letter[k])
 
                 # Letter is uppercase
                 if letter_ascii < 91:
@@ -79,6 +79,11 @@ def shift(c):
     else:
         result = input - 97
         return result
+
+def cipher(a):
+    letter_ascii = ord(a)
+
+
 
 
 if __name__ == "__main__":
