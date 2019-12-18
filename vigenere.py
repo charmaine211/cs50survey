@@ -89,7 +89,7 @@ def main():
             k += 1
 
         # Print the encrypted word and remove the space at the end
-        print(encryp.stripr())
+        print(encryp.rstrip())
 
     print('')
 
