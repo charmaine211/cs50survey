@@ -95,28 +95,38 @@ unsigned int size(void)
 bool check(const char *word)
 {
     int len = strlen(word);
-    char lword[len + 1];
-    for (int i = 0; i < len; i++)
+
+    char * lower_case_word = malloc( sizeof(char) * (len+1) );
+
+    lower_case_word[len+1] = '\0';
+
+    // change all letters to lowercase
+    for(int i = 0; i < len; i++)
     {
-        lword[i] = tolower(word[i]);
+        lower_case_word[i] = tolower(word[i]);
     }
-    lword[len] = '\0';
 
-    int bucket = hash(lword);
-    node *cursor = hashtable[bucket];
+    // generate the int hash
+    int index = hash(lower_case_word);
 
-    while (cursor != NULL)
+    // traverse the linked list at the array index
+    node *trav =  hashtable[index];
+
+    // loop through while node->next is not null
+    while (trav != NULL)
     {
-        if (strcmp(cursor->word, lword) != 0)
+        if (strcmp(trav->word, lower_case_word) == 0)
         {
-            cursor = cursor->next;
-        }
-
-        else
-        {
+            free(lower_case_word);
             return true;
         }
+
+        trav = trav->next;
     }
+
+    // if we get to this point the word was not found
+    //printf("searched the entire bucket and the word was not found!\n");
+    free(lower_case_word);
     return false;
 }
 
