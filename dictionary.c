@@ -56,6 +56,7 @@ bool load(const char *dictionary)
     {
         // create a temporary node
         node *temp = calloc(N, sizeof(node));
+        temp -> next = NULL;
 
         strncpy(temp->word, word, sizeof(word));
 
@@ -135,8 +136,10 @@ bool check(const char *word)
 // Code from https://stackoverflow.com/questions/31336535/fastest-method-for-freeing-up-memory-allocated-to-a-hash-table-in-c
 bool unload(void)
 {
-    node *temp = calloc(N, sizeof(node));
+    node *temp = malloc(sizeof(node));
     node *crawler = calloc(N, sizeof(char));
+
+    temp-> next = NULL;
 
     for(int n = 0; n < wordcounter; n++)
     {
