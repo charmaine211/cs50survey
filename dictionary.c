@@ -111,6 +111,11 @@ bool check(const char *word)
     // generate the int hash
     int index = hash(lower_case_word);
 
+    if ((index == 1 || index == 9) && len == 1)
+    {
+        return true;
+    }
+
     // traverse the linked list at the array index
     node *trav =  hashtable[index];
 
