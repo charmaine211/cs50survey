@@ -55,7 +55,7 @@ bool load(const char *dictionary)
     while (fscanf(file, "%s", word) != EOF)
     {
         // create a temporary node
-        node *temp = calloc(N, sizeof(node));
+        node *temp = malloc(sizeof(node));
         temp -> next = NULL;
 
         strncpy(temp->word, word, sizeof(word));
