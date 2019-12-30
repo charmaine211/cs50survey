@@ -97,22 +97,46 @@ unsigned int size(void)
 bool check(const char *word)
 {
     int len = strlen(word);
-    char lword[len + 1];
-    for (int i = 0; i < len; i++)
-    {
-        lword[i] = tolower(word[i]);
-    }
-    lword[len] = '\0';
 
-    int bucket = hash(lword);
-    node *cursor = hashtable[bucket];
-    while (cursor != NULL)
+    char *lower_case_word = calloc((len+1), sizeof(char));
+
+    lower_case_word[len] = '\0';
+
+    // generate the int hash
+    int index = hash(lower_case_word);
+
+    if ((index == 1 || index == 2) && len == 1)
     {
-        if (strcmp(cursor->word, lword) != 0)
-            cursor = cursor->next;
-        else
-            return true;
+        return true;
     }
+
+        // change all letters to lowercase
+    for(int i = 0; i < len; i++)
+    {
+        lower_case_word[i] = tolower(word[i]);
+    }
+
+    // Common words
+    // the, be, to, of, and, a, in, that, have, i
+
+    // traverse the linked list at the array index
+    node *trav =  hashtable[index];
+
+    // loop through while node->next is not null
+    while (trav != NULL)
+    {
+        if (strcmp(trav->word, lower_case_word) == 0)
+        {
+            free(lower_case_word);
+            return true;
+        }
+
+        trav = trav->next;
+    }
+
+    // if we get to this point the word was not found
+    //printf("searched the entire bucket and the word was not found!\n");
+    free(lower_case_word);
     return false;
 }
 
