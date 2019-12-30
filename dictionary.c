@@ -135,7 +135,7 @@ bool check(const char *word)
 // Code from https://stackoverflow.com/questions/31336535/fastest-method-for-freeing-up-memory-allocated-to-a-hash-table-in-c
 bool unload(void)
 {
-    node *temp;
+    node *temp = calloc(1, sizeof(node));
     node *crawler = calloc(N, sizeof(char));
 
     for(int n = 0; n < wordcounter; n++)
