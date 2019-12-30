@@ -102,17 +102,14 @@ bool check(const char *word)
 
     lower_case_word[len] = '\0';
 
-    // generate the int hash
-    int index = hash(lower_case_word);
-
-        // change all letters to lowercase
+    // change all letters to lowercase
     for(int i = 0; i < len; i++)
     {
         lower_case_word[i] = tolower(word[i]);
     }
 
-    // Common words
-    // the, be, to, of, and, a, in, that, have, i
+    // generate the int hash
+    int index = hash(lower_case_word);
 
     // traverse the linked list at the array index
     node *trav =  hashtable[index];
