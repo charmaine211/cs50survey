@@ -58,7 +58,7 @@ bool load(const char *dictionary)
         node *temp = malloc(sizeof(node));
         temp -> next = NULL;
 
-        strncpy(temp->word, word, sizeof(word));
+        strncpy(temp -> word, word, sizeof(word));
 
         // implement hash function to get the index
         int index = hash(word);
@@ -66,7 +66,7 @@ bool load(const char *dictionary)
         // if the corresponding index in hashtable is empty, assign it to the temp node
         if (hashtable[index] == NULL)
         {
-            hashtable[index] = temp;
+            temp = hashtable[index];
         }
 
         // else append temp to the start of the linked list
