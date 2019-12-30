@@ -100,7 +100,7 @@ bool check(const char *word)
 
     char *lower_case_word = calloc((len+1), sizeof(char));
 
-    lower_case_word[len+1] = '\0';
+    lower_case_word[len] = '\0';
 
     // change all letters to lowercase
     for(int i = 0; i < len; i++)
@@ -136,29 +136,17 @@ bool check(const char *word)
 // Code from https://stackoverflow.com/questions/31336535/fastest-method-for-freeing-up-memory-allocated-to-a-hash-table-in-c
 bool unload(void)
 {
-    node *temp = malloc(sizeof(node));
-    node *crawler = calloc(N, sizeof(char));
-
-    temp-> next = NULL;
-
-    for(int n = 0; n < wordcounter; n++)
+    for (int i = 0; i < N; i++)
     {
-        if (hashtable[n] != NULL)
-        {
-            // If only 1 node free it
-            crawler = hashtable[n];
-            while (crawler != NULL)
-            {
-                temp = crawler->next;
-                crawler = temp;
-            }
+        node *cursor = hashtable[i];
 
-            // free last node in list
-            temp = crawler;
-            free(temp);
+        while (cursor != NULL)
+        {
+            node *tmp = cursor;
+            cursor = cursor->next;
+            free(tmp);
         }
     }
 
-    free(crawler);
     return true;
 }
