@@ -92,31 +92,42 @@ unsigned int size(void)
 }
 
 // Returns true if word is in dictionary else false
+// Code from https://gist.github.com/yangrq1018/e769abd7489ea8f52351b30829796a15
 bool check(const char *word)
 {
     int len = strlen(word);
-    char lword[len + 1];
-    for (int i = 0; i < len; i++)
+
+    char *lower_case_word = calloc((len+1), sizeof(char));
+
+    lower_case_word[len+1] = '\0';
+
+    // change all letters to lowercase
+    for(int i = 0; i < len; i++)
     {
-        lword[i] = tolower(word[i]);
+        lower_case_word[i] = tolower(word[i]);
     }
-    lword[len] = '\0';
 
-    int bucket = hash(lword);
-    node *cursor = hashtable[bucket];
+    // generate the int hash
+    int index = hash(lower_case_word);
 
-    while (cursor != NULL)
+    // traverse the linked list at the array index
+    node *trav =  hashtable[index];
+
+    // loop through while node->next is not null
+    while (trav != NULL)
     {
-        if (strcmp(cursor->word, lword) != 0)
+        if (strcmp(trav->word, lower_case_word) == 0)
         {
-            cursor = cursor->next;
-        }
-
-        else
-        {
+            free(lower_case_word);
             return true;
         }
+
+        trav = trav->next;
     }
+
+    // if we get to this point the word was not found
+    //printf("searched the entire bucket and the word was not found!\n");
+    free(lower_case_word);
     return false;
 }
 
@@ -125,7 +136,7 @@ bool check(const char *word)
 bool unload(void)
 {
     node *temp;
-    node *crawler;
+    node *crawler = calloc(N, sizeof(char));
 
     for(int n = 0; n < wordcounter; n++)
     {
@@ -136,7 +147,6 @@ bool unload(void)
             while (crawler != NULL)
             {
                 temp = crawler->next;
-                free(crawler);
                 crawler = temp;
             }
 
@@ -146,5 +156,6 @@ bool unload(void)
         }
     }
 
+    free(crawler);
     return true;
 }
