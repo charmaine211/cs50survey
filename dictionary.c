@@ -56,8 +56,9 @@ bool load(const char *dictionary)
     {
         // create a temporary node
         node *temp = malloc(sizeof(node));
+        temp -> next = NULL;
 
-        strncpy(temp->word, word, sizeof(word));
+        strncpy(temp -> word, word, sizeof(word));
 
         // implement hash function to get the index
         int index = hash(word);
@@ -96,28 +97,38 @@ unsigned int size(void)
 bool check(const char *word)
 {
     int len = strlen(word);
-    char lword[len + 1];
-    for (int i = 0; i < len; i++)
+
+    char *lower_case_word = calloc((len+1), sizeof(char));
+
+    lower_case_word[len] = '\0';
+
+    // change all letters to lowercase
+    for(int i = 0; i < len; i++)
     {
-        lword[i] = tolower(word[i]);
+        lower_case_word[i] = tolower(word[i]);
     }
-    lword[len] = '\0';
 
-    int bucket = hash(lword);
-    node *cursor = hashtable[bucket];
+    // generate the int hash
+    int index = hash(lower_case_word);
 
-    while (cursor != NULL)
+    // traverse the linked list at the array index
+    node *trav =  hashtable[index];
+
+    // loop through while node->next is not null
+    while (trav != NULL)
     {
-        if (strcmp(cursor->word, lword) != 0)
+        if (strcmp(trav->word, lower_case_word) == 0)
         {
-            cursor = cursor->next;
-        }
-
-        else
-        {
+            free(lower_case_word);
             return true;
         }
+
+        trav = trav->next;
     }
+
+    // if we get to this point the word was not found
+    //printf("searched the entire bucket and the word was not found!\n");
+    free(lower_case_word);
     return false;
 }
 
@@ -125,25 +136,15 @@ bool check(const char *word)
 // Code from https://stackoverflow.com/questions/31336535/fastest-method-for-freeing-up-memory-allocated-to-a-hash-table-in-c
 bool unload(void)
 {
-    node *temp;
-    node *crawler;
-
-    for(int n = 0; n < wordcounter; n++)
+    for (int i = 0; i < N; i++)
     {
-        if (hashtable[n] != NULL)
-        {
-            // If only 1 node free it
-            crawler = hashtable[n];
-            while (crawler != NULL)
-            {
-                temp = crawler->next;
-                free(crawler);
-                crawler = temp;
-            }
+        node *cursor = hashtable[i];
 
-            // free last node in list
-            temp = crawler;
-            free(temp);
+        while (cursor != NULL)
+        {
+            node *tmp = cursor;
+            cursor = cursor->next;
+            free(tmp);
         }
     }
 
