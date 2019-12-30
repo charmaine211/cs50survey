@@ -66,7 +66,7 @@ bool load(const char *dictionary)
         // if the corresponding index in hashtable is empty, assign it to the temp node
         if (hashtable[index] == NULL)
         {
-            temp = hashtable[index];
+            hashtable[index] = temp;
         }
 
         // else append temp to the start of the linked list
