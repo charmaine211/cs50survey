@@ -1,5 +1,6 @@
 from nltk.tokenize import sent_tokenize
 
+
 def lines(a, b):
     """Return lines in both a and b"""
 
@@ -42,7 +43,7 @@ def substrings(a, b, n):
         # Iterate over the substrings and store in a list
         length = len(item)
 
-        for i in range (length):
+        for i in range(length):
             word = item[int(i):int(n)]
             list_a.append(word)
             n += 1
@@ -56,7 +57,7 @@ def substrings(a, b, n):
         # Iterate over the substrings and store in a list
         length = len(item)
 
-        for j in range (length):
+        for j in range(length):
             word = item[int(j):int(m)]
             list_b.append(word)
             m += 1
