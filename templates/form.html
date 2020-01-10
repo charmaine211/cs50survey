@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3"></h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post" class="form-container" >
+
+        <!-- Form options -->
+        <p>
+            <input type="text" name="name" placeholder="Full name" required>
+        </p>
+        <p></p>
+
+        <p>
+            <select name="house" required>
+                <option value="" selected disabled hidden>Choose your house</option>
+                <option value="Hufflepuff" >Hufflepuff</option>
+                <option value="Ravenclaw">Ravenclaw</option>
+                <option value="Slytherin">Slytherin</option>
+                <option value="Gryffindor">Gryffindor</option>
+            </select>
+        </p>
+        <p></p>
+            <select name="role" required>
+                <option value="" selected disabled hidden>Choose your role</option>
+                <option id="role" value="Beater"> Beater<br>
+                <option id="role" value="Chaser"> Chaser<br>
+                <option id="role" value="Keeper"> Keeper<br>
+                <option id="role" value="Seeker"> Seeker<br>
+            </select>
+        <p></p>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+        <!-- Javascript requiered to fill out-->
+        <script src="../javascript/no-input.js"></script>
+
+{% endblock %}
