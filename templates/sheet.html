@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div action="/sheet" method="get">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">NAME</th>
+                <th scope="col">HOUSE</th>
+                <th scope="col">ROLE</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Some Jinja code to iterate over the names in the sheet -->
+            {% for i in range(rowcounter) %}
+            <tr>
+                <th>{{names[i].capitalize()}}</th>
+                <th>{{houses[i].capitalize()}}</th>
+                <th>{{roles[i].capitalize()}}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
