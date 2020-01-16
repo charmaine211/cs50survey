@@ -81,30 +81,36 @@ bool vote(string name)
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    candidate winner[candidate_count];
+    candidate winner;
 
-    int pass;
+    int c, d, e;
 
-    for (int k = 0; k < candidate_count; k++)
+    // Bubble sort code from https://www.programmingsimplified.com/c/source-code/c-program-bubble-sort
+
+    for (c = 0 ; c < candidate_count - 1; c++)
     {
-        if (candidates[k].votes > winner[0].votes)
+        for (d = 0 ; d < candidate_count - c - 1; d++)
         {
-            pass = 0;
-            winner[0].name = candidates[k].name;
-            winner[0].votes = candidates[k].votes;
-        }
-
-        else if (candidates[k].votes == winner[0].votes)
-        {
-            pass = pass + 1;
-            strcpy(winner[pass].name, candidates[k].name);
-            winner[pass].votes = candidates[k].votes;
+            if (candidates[d].votes < candidates[d+1].votes) /* For decreasing order use < */
+            {
+                winner.votes = candidates[d].votes;
+                strcpy(winner.name, candidates[d].name);
+                candidates[d].votes  = candidates[d+1].votes;
+                strcpy(candidates[d].name, candidates[d+1].name);
+                candidates[d+1].votes = winner.votes;
+                strcpy(candidates[d+1].name, winner.name);
+            }
         }
     }
 
-    for (int l = 0; l < pass; l++)
+    printf("%s\n", candidates[0].name);
+
+    for (e = 0; e < (candidate_count - 1); e++)
     {
-        printf("%s\n", winner[l].name);
+        if (candidates[e].votes == candidates[e + 1].votes)
+        {
+            printf("%s\n", candidates[e + 1].name);
+        }
     }
 
     return;
