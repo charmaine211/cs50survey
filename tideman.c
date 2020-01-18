@@ -124,11 +124,16 @@ void record_preferences(int ranks[])
         }
     }
 
+    int l;
+
     for (int k = 0; k < candidate_count; k++)
     {
-        for (int l = (k + 1); l < (candidate_count - 1); l++)
+        if (k != l)
         {
-            preferences[ranks[k]][ranks[l]]++;
+            for (l = 0; l < (candidate_count - 1); l++)
+            {
+                preferences[ranks[k]][ranks[l]]++;
+            }
         }
     }
 
@@ -149,7 +154,6 @@ void add_pairs(void)
                     pairs[pair_count].winner = i;
                     pairs[pair_count].loser = j;
                     pair_count++;
-                    printf("winner: %d loser: %d \n", i, j);
                 }
             }
         }
@@ -171,9 +175,7 @@ void sort_pairs(void)
     {
         for (d = 0 ; d < pair_count - c - 1; d++)
         {
-            if (preferences[pairs[d].winner] < preferences[pairs[d + 1].winner]
-                && (preferences[pairs[d].winner] - preferences[pairs[d].loser]) <
-                (preferences[pairs[d + 1].winner] - preferences[pairs[d + 1].loser])) /* For decreasing order use < */
+            if (preferences[pairs[d].winner][pairs[d].loser] < preferences[pairs[d + 1].winner][pairs[d].loser]) /* For decreasing order use < */
             {
                 // Copy first place in temporary
                 temp.winner = pairs[d].winner;
@@ -189,14 +191,6 @@ void sort_pairs(void)
             }
         }
     }
-
-    printf("Sorted list:\n");
-
-    for(int test = 0; test < pair_count; test++)
-    {
-        printf("winner: %d loser: %d \n", pairs[test].winner, pairs[test].loser);
-    }
-
     return;
 }
 
