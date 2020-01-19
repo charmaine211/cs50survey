@@ -125,7 +125,7 @@ void record_preferences(int ranks[])
         }
     }
 
-    for (int m = 0; m < (candidate_count - 1); m++)
+    for (int m = 0; m < candidate_count; m++)
     {
         for (int l = 0; l < candidate_count; l++)
         {
