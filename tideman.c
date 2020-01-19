@@ -102,6 +102,7 @@ bool vote(int rank, string name, int ranks[])
 {
     for (int k = 0; k < candidate_count; k++)
     {
+        // Check if name exist, then rank in ranks
         if (strcmp(candidates[k], name) == 0)
         {
             ranks[rank] = k;
@@ -124,15 +125,13 @@ void record_preferences(int ranks[])
         }
     }
 
-    int l;
-
-    for (int k = 0; k < candidate_count; k++)
+    for (int m = 0; m < (candidate_count - 1); m++)
     {
-        if (k != l)
+        for (int l = 0; l < candidate_count; l++)
         {
-            for (l = 0; l < (candidate_count - 1); l++)
+            if (m != l)
             {
-                preferences[ranks[k]][ranks[l]]++;
+                preferences[ranks[m]][ranks[l]]++;
             }
         }
     }
