@@ -168,14 +168,17 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
+    int tie_breaker = candidate_count/2;
+
     for (int l = 0; l < candidate_count; l++)
     {
-        if (candidates[l].votes > (candidate_count/2))
+        if (candidates[l].votes > tie_breaker)
         {
             printf("%s", candidates[l].name);
             return true;
         }
     }
+
     return false;
 }
 
