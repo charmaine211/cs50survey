@@ -180,8 +180,16 @@ bool print_winner(void)
         }
     }
 
-    printf("%s", winner.name);
-    return true;
+    if (winner.votes != (candidate_count / 2))
+    {
+        printf("%s", winner.name);
+        return true;
+    }
+
+    else
+    {
+        return false;
+    }
 }
 
 // Return the minimum number of votes any remaining candidate has
