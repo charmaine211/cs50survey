@@ -183,14 +183,14 @@ bool print_winner(void)
 int find_min(void)
 {
     // Store the first candidate as the minimum number, just in case [0] is the smallest
-    int minimum = candidates[0].votes;
+    int minimum = candidates[m].votes;
 
     // Loop until 1 for last candidate. Otherwise it will go outside the array bounds
-    for (int m = 0; m < (candidate_count - 1); m++)
+    for (int m = 1; m < candidate_count; m++)
     {
-        if (candidates[m].votes > candidates[m + 1].votes)
+        if (candidates[m].votes < minimum && candidates[m].eliminated == false)
         {
-            minimum = candidates[m + 1].votes;
+            minimum = candidates[m].votes;
         }
     }
 
