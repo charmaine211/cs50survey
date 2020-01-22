@@ -152,7 +152,7 @@ void tabulate(void)
             int c = preferences[i][j];
 
             // If eliminated is false, so candidate is still in te running
-            if (candidates[c].eliminated == false)
+            if (!candidates[c].eliminated)
             {
                 // Add ++ to votes
                 candidates[c].votes++;
@@ -182,15 +182,26 @@ bool print_winner(void)
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
-    // Store the first candidate as the minimum number, just in case [0] is the smallest
-    int minimum = candidates[m].votes;
 
-    // Loop until 1 for last candidate. Otherwise it will go outside the array bounds
-    for (int m = 1; m < candidate_count; m++)
+    // Set minimum by searching for the smallest non eliminates candidate
+    int minimum;
+
+    for (int n = 0; n < candidate_count; n++)
     {
-        if (candidates[m].votes < minimum && candidates[m].eliminated == false)
+        if (!candidates[n].eliminated)
         {
-            minimum = candidates[m].votes;
+            minimum = candidates[n].votes;
+            break;
+        }
+    }
+
+    // Loop through candidates that are still in the running to see who has the smallest amount of votes
+    for (int m = 0; m < candidate_count; m++)
+    {
+        // When the candidate is still in the running
+        if (!candidates[m].eliminated && candidates[m].votes < minimum)
+        {
+                minimum = candidates[m].votes;
         }
     }
 
@@ -218,7 +229,7 @@ void eliminate(int min)
     {
         if (candidates[p].votes == min)
         {
-            candidates[p].eliminated == true;
+            candidates[p].eliminated = true;
         }
     }
 
