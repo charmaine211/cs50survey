@@ -175,7 +175,7 @@ bool print_winner(void)
     {
         if (!candidates[l].eliminated && candidates[l].votes > winner.votes)
         {
-            winner.name = candidates[l].name;
+            strcpy(winner.name, candidates[l].name);
             winner.votes = candidates[l].votes;
         }
     }
