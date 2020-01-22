@@ -169,7 +169,7 @@ void tabulate(void)
 bool print_winner(void)
 {
     candidate winner;
-    winner.votes = candidate_count / 2;
+    winner.votes = 0;
 
     for (int l = 0; l < candidate_count; l++)
     {
@@ -180,7 +180,7 @@ bool print_winner(void)
         }
     }
 
-    if (winner.votes != (candidate_count / 2))
+    if (winner.votes > (candidate_count / 2))
     {
         printf("%s", winner.name);
         return true;
