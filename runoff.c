@@ -170,6 +170,7 @@ bool print_winner(void)
 {
     candidate winner;
     winner.votes = 0;
+    float tie_breaker = (candidate_count / 2);
 
     for (int l = 0; l < candidate_count; l++)
     {
@@ -183,7 +184,7 @@ bool print_winner(void)
         }
     }
 
-    if (winner.votes > (candidate_count / 2))
+    if (winner.votes > tie_breaker)
     {
         printf("%s", winner.name);
         return true;
