@@ -174,13 +174,10 @@ bool print_winner(void)
 
     for (int l = 0; l < candidate_count; l++)
     {
-        if (!candidates[l].eliminated)
+        if (!candidates[l].eliminated && candidates[l].votes > winner.votes)
         {
-            if (candidates[l].votes > winner.votes)
-            {
-                strcpy(winner.name, candidates[l].name);
-                winner.votes = candidates[l].votes;
-            }
+            strcpy(winner.name, candidates[l].name);
+            winner.votes = candidates[l].votes;
         }
     }
 
@@ -190,7 +187,7 @@ bool print_winner(void)
         return true;
     }
 
-        return false;
+    return false;
 }
 
 // Return the minimum number of votes any remaining candidate has
