@@ -81,24 +81,24 @@ bool vote(string name)
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
+    // Temp variable
     candidate winner;
 
     int c, d, e;
 
     // Bubble sort code from https://www.programmingsimplified.com/c/source-code/c-program-bubble-sort
-
     for (c = 0 ; c < candidate_count - 1; c++)
     {
         for (d = 0 ; d < candidate_count - c - 1; d++)
         {
-            if (candidates[d].votes < candidates[d+1].votes) /* For decreasing order use < */
+            if (candidates[d].votes < candidates[d + 1].votes) /* For decreasing order use < */
             {
                 winner.votes = candidates[d].votes;
                 strcpy(winner.name, candidates[d].name);
-                candidates[d].votes  = candidates[d+1].votes;
-                strcpy(candidates[d].name, candidates[d+1].name);
-                candidates[d+1].votes = winner.votes;
-                strcpy(candidates[d+1].name, winner.name);
+                candidates[d].votes  = candidates[d + 1].votes;
+                strcpy(candidates[d].name, candidates[d + 1].name);
+                candidates[d + 1].votes = winner.votes;
+                strcpy(candidates[d + 1].name, winner.name);
             }
         }
     }
