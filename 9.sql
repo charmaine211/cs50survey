@@ -6,4 +6,4 @@ WHERE people.id IN (SELECT DISTINCT stars.person_id
     WHERE stars.movie_id IN (SELECT movies.id
         FROM movies
         WHERE year = 2004))
-ORDER BY birth DESC;
+ORDER BY birth;
