@@ -2,6 +2,7 @@ from sys import argv
 from cs50 import sql
 import cs50
 
+
 def main():
 
     # Check if right command line arguments are given
@@ -17,12 +18,12 @@ def main():
 
     for student_dict in student_list:
         if student_dict.get("middle") == None:
-            print(student_dict.get("first"), end = ' ')
-            print(student_dict.get("last"), end = '')
+            print(student_dict.get("first"), end=' ')
+            print(student_dict.get("last"), end='')
             print(", born", student_dict.get("birth"))
         else:
-            print(student_dict.get("first"), student_dict.get("middle"), end = ' ')
-            print(student_dict.get("last"), end = '')
+            print(student_dict.get("first"), student_dict.get("middle"), end=' ')
+            print(student_dict.get("last"),end= '')
             print(", born", student_dict.get("birth"))
 
 

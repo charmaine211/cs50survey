@@ -3,6 +3,7 @@ from sys import argv
 from cs50 import sql
 import cs50
 
+
 def main():
 
     # Check if right command line arguments are given
