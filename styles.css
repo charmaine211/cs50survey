@@ -1,0 +1,176 @@
+/*ALL PAGES*/
+
+/* Typography*/
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.item{
+  width:auto;
+  text-align:center;
+  display:block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  margin-right: 10px;
+  margin-bottom: 1px;
+  padding:30px 150px 0px 150px;
+}
+
+.textcentered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.bottom-centered {
+  position: absolute;
+  bottom: 2%;
+  left: 150px;
+  right: 150px;
+  text-align: center;
+}
+
+/*Image gallery*/
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.8;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Style the images inside the grid */
+.column iframe {
+  opacity: 0.8;
+  cursor: pointer;
+  width: 100%;
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+.column iframe:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container (positioning is needed to position the close button and the text) */
+.container {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 35px;
+  left: 40px;
+  color: grey;
+  font-size: 20px;
+}
+
+/* Closable button inside the image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  color: grey;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+/*Top bar*/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+  color: white;
+}
+
+
+/*HOMEPAGE*/
+/*Background image*/
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("https://charmainenoten.com/wp-content/uploads/2018/03/Screen-Shot-2017-10-17-at-7.55.08-PM.png");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hometext{
+  color: white;
+}
+
+/*Button CONTACT on homepage*/
+.button {
+  background-color: white;
+  border: 1px solid white;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 4px;
+}
+
+.button4 {
+  border-radius: 12px;
+}
+
+/*ABOUT*/
+
+/*Resize image*/
+.aboutimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 20%;
+  border-radius: 50%;
+}
+
