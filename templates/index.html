@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    Your current balance is <div class="total">${{ current_balance }}</div>
+
+    {% if stock == [] %}
+        <p>Go and buy yourself some stocks.
+        Make that money flow!</p>
+
+    {% else %}
+        <table style="width:100%" class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Stock</th>
+                    <th>Amount of stocks</th>
+                    <th>Current price</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for i in range(total_symbols) %}
+                <tr>
+                    <td>{{ stock[i][0] }}</td>
+                    <td>{{ stock[i][1] }}</td>
+                    <td>${{ stock[i][2] }}</td>
+                    <td>${{ stock[i][3] }}</td>
+                </tr>
+        {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total: </td>
+                    <td class="total">${{ total_value }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endif %}
+{% endblock %}
