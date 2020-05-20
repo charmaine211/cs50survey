@@ -1,0 +1,8 @@
+body{
+    font-family: 'Ibarra Real Nova', serif;
+}
+
+.form-container{
+    display:grid;
+    justify-content:center;
+}
